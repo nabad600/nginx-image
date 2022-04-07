@@ -4,52 +4,52 @@ LABEL maintainer Naba Das <hello@get-deck.com>
 # Persistent runtime dependencies
 ARG DEPS="\
         nginx \
-        php8 \
-        php8-phar \
-        php8-bcmath \
-        php8-calendar \
-        php8-mbstring \
-        php8-exif \
-        php8-ftp \
-        composer \
-        php8-openssl \
-        php8-zip \
-        php8-sysvsem \
-        php8-sysvshm \
-        php8-sysvmsg \
-        php8-shmop \
-        php8-sockets \
-        php8-zlib \
-        php8-bz2 \
-        php8-curl \
-        php8-simplexml \
-        php8-xml \
-        php8-opcache \
-        php8-dom \
-        php8-xmlreader \
-        php8-xmlwriter \
-        php8-tokenizer \
-        php8-ctype \
-        php8-session \
-        php8-fileinfo \
-        php8-iconv \
-        php8-json \
-        php8-posix \
-        php8-pdo \
-        php8-pdo_dblib \
-        php8-pdo_mysql \
-        php8-pdo_odbc \
-        php8-pdo_pgsql\
-        php8-pdo_sqlite \
-        php8-mysqli \
-        php8-mysqlnd \
-        php8-dev \
-        php8-fpm \
-        php8-pear \
+        php7 \
+        php7-phar \
+        php7-bcmath \
+        php7-calendar \
+        php7-mbstring \
+        php7-exif \
+        php7-ftp \
+        php7-openssl \
+        php7-zip \
+        php7-sysvsem \
+        php7-sysvshm \
+        php7-sysvmsg \
+        php7-shmop \
+        php7-sockets \
+        php7-zlib \
+        php7-bz2 \
+        php7-curl \
+        php7-simplexml \
+        php7-xml \
+        php7-opcache \
+        php7-dom \
+        php7-xmlreader \
+        php7-xmlwriter \
+        php7-tokenizer \
+        php7-ctype \
+        php7-session \
+        php7-fileinfo \
+        php7-iconv \
+        php7-json \
+        php7-posix \
+        php7-pdo \
+        php7-pdo_dblib \
+        php7-pdo_mysql \
+        php7-pdo_odbc \
+        php7-pdo_pgsql\
+        php7-pdo_sqlite \
+        php7-mysqli \
+        php7-mysqlnd \
+        php7-dev \
+        php7-fpm \
+        php7-pear \
         curl \
+        git \
         ca-certificates \
         runit \
-        php8-intl \
+        php7-intl \
 	    snappy \
         bash \
 "
@@ -60,12 +60,12 @@ RUN set -x \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY nginx /
-RUN ln -s /usr/bin/php8 /usr/bin/php
+# RUN ln -s /usr/bin/php7 /usr/bin/php
 COPY default.conf /etc/nginx/conf.d/default.conf
 WORKDIR /var/www
-COPY php_ini/php.ini /etc/php8/php.ini
-
-RUN apk add --no-cache php8-pecl-mongodb
+COPY php_ini/php.ini /etc/php7/php.ini
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
+RUN apk add --no-cache php7-pecl-mongodb
 RUN apk upgrade
 
 FROM scratch
