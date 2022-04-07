@@ -1,7 +1,7 @@
 name: Publish Docker Image
 on:
   push:
-    branches: [ master ]
+    branches: [ php7 ]
 env:
   IMAGE_NAME: nginx
   VERSION: v7.4
