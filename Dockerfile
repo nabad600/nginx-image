@@ -46,6 +46,7 @@ ARG DEPS="\
         php8-dev \
         php8-fpm \
         php8-pear \
+	git \
         curl \
         ca-certificates \
         runit \
