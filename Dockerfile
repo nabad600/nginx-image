@@ -74,6 +74,7 @@ FROM scratch
 COPY --from=builder / /
 WORKDIR /var/www
 EXPOSE 80
+EXPOSE 443
 RUN chmod +x /sbin/runit-wrapper
 RUN chmod +x /sbin/runsvdir-start
 RUN chmod +x /etc/service/nginx/run
