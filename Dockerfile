@@ -62,7 +62,6 @@ RUN set -x \
 
 
 COPY nginx /
-RUN ln -s /usr/bin/php8 /usr/bin/php
 COPY default.conf /etc/nginx/conf.d/default.conf
 WORKDIR /var/www
 COPY php_ini/php.ini /etc/php8/php.ini
