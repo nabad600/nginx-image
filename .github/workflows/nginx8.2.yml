@@ -1,10 +1,10 @@
 name: Publish Docker Image
 on:
   push:
-    branches: [ master ]
+    branches: [ php82 ]
 env:
   IMAGE_NAME: nginx
-  VERSION: v8.0
+  VERSION: v8.2
 jobs:
   buildImage:
     name: Build Docker Image
@@ -27,4 +27,4 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Build Container image
-        run: docker buildx build --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x --tag ghcr.io/nabad600/nginx:v8.0 . --push
+        run: docker buildx build --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x --tag ghcr.io/nabad600/nginx:v8.2 . --push
