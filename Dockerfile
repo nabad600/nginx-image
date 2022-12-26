@@ -64,6 +64,8 @@ RUN set -x \
 
 COPY nginx /
 COPY default.conf /etc/nginx/conf.d/default.conf
+RUN ln -s /usr/bin/php82 /usr/bin/php
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 WORKDIR /var/www
 COPY php_ini/php.ini /etc/php82/php.ini
 
