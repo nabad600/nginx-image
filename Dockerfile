@@ -11,7 +11,7 @@ ARG DEPS="\
         php82-mbstring \
         php82-exif \
         php82-ftp \
-        composer \
+        # composer \
         php82-openssl \
         php82-zip \
         php82-sysvsem \
